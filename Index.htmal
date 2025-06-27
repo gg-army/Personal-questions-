@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0a0a23;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Starry Background Animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+        }
+
+        .stars::before,
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: twinkle 2s infinite;
+        }
+
+        .stars::before {
+            box-shadow: 
+                100px 100px #fff, 200px 300px #fff, 300px 150px #fff,
+                400px 500px #fff, 500px 200px #fff, 600px 400px #fff,
+                700px 100px #fff, 800px 600px #fff, 900px 300px #fff;
+            animation-delay: 0.5s;
+        }
+
+        .stars::after {
+            box-shadow: 
+                150px 200px #fff, 250px 400px #fff, 350px 100px #fff,
+                450px 300px #fff, 550px 500px #fff, 650px 200px #fff;
+            animation-delay: 1s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            border: 3px solid #00ffcc;
+            box-shadow: 0 0 20px #00ffcc;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px #00ffcc; }
+            50% { box-shadow: 0 0 40px #00ffcc; }
+            100% { box-shadow: 0 0 20px #00ffcc; }
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        input[type="date"] {
+            padding: 12px;
+            font-size: 1.1em;
+            border: 2px solid #ff00ff;
+            background: #1a1a3d;
+            color: #fff;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input[type="date"]:focus {
+            border-color: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1em;
+            background: #ff00ff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #ff00ff;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #00ffcc;
+            color: #0a0a23;
+            box-shadow: 0 0 20px #00ffcc;
+            transform: scale(1.1);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        #shareBtn {
+            background: #25D366;
+            box-shadow: 0 0 10px #25D366;
+        }
+
+        #shareBtn:hover {
+            background: #00ffcc;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    </style>
+<script type='text/javascript' src='//pl27002097.profitableratecpm.com/2a/7e/51/2a7e51ed1a55357b60426db917ac8ab1.js'></script>
+</head>
+<body>
+<script type="text/javascript">
+	atOptions = {
+		'key' : '2846a23c1d2e335371b476ec038b7c88',
+		'format' : 'iframe',
+		'height' : 300,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/2846a23c1d2e335371b476ec038b7c88/invoke.js"></script>
+    <div class="stars"></div>
+    <div class="container">
+        <h1>Personality Quest</h1>
+        <div class="input-group">
+            <input type="date" id="birthday" required>
+        </div>
+        <button onclick="getZodiac()">Discover Your Type!</button>
+        <div id="result"></div>
+        <button id="shareBtn" style="display: none;" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+    </div>
+
+
+    <script>
+        let shareText = '';
+
+        function getZodiac() {
+            const birthday = new Date(document.getElementById('birthday').value);
+            if (!birthday || isNaN(birthday)) {
+                document.getElementById('result').innerText = 'Please enter a valid date!';
+                document.getElementById('shareBtn').style.display = 'none';
+                return;
+            }
+
+            const month = birthday.getMonth() + 1;
+            const day = birthday.getDate();
+
+            let zodiac = '';
+            let personality = '';
+
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+                zodiac = 'Aries';
+                personality = 'Bold, adventurous, and full of energy! You charge into challenges like a cosmic warrior.';
+            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+                zodiac = 'Taurus';
+                personality = 'Grounded and reliable, you’re the rock of the zodiac with a love for life’s finer things.';
+            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+                zodiac = 'Gemini';
+                personality = 'Witty and curious, you’re a social butterfly with a knack for juggling ideas.';
+            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+                zodiac = 'Cancer';
+                personality = 'Nurturing and intuitive, you’re the heart of the party with a cozy, caring vibe.';
+            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+                zodiac = 'Leo';
+                personality = 'Confident and charismatic, you light up any room like a true star!';
+            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+                zodiac = 'Virgo';
+                personality = 'Detail-oriented and thoughtful, you’re the master planner of the zodiac.';
+            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+                zodiac = 'Libra';
+                personality = 'Charming and balanced, you bring harmony and style to every situation.';
+            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+                zodiac = 'Scorpio';
+                personality = 'Intense and mysterious, you dive deep into life’s secrets with passion.';
+            } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+                zodiac = 'Sagittarius';
+                personality = 'Free-spirited and adventurous, you’re always chasing the next big quest!';
+            } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+                zodiac = 'Capricorn';
+                personality = 'Ambitious and disciplined, you climb life’s mountains with determination.';
+            } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+                zodiac = 'Aquarius';
+                personality = 'Innovative and unique, you’re the visionary who thinks outside the galaxy.';
+            } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+                zodiac = 'Pisces';
+                personality = 'Dreamy and empathetic, you swim through life with creativity and compassion.';
+            }
+
+            shareText = `I’m a ${zodiac}! ${personality} Discover yours at Zodiac Personality Quest!`;
+            document.getElementById('result').innerHTML = 
+                `You are a <strong>${zodiac}</strong>!<br>${personality}`;
+            document.getElementById('shareBtn').style.display = 'inline-block';
+        }
+
+        function shareOnWhatsApp() {
+            const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+<script async="async" data-cfasync="false" src="//pl27023073.profitableratecpm.com/e735628c97c1b79e1991be307c1e506f/invoke.js"></script>
+<div id="container-e735628c97c1b79e1991be307c1e506f"></div>
+</html>
